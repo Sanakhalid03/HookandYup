@@ -19,7 +19,9 @@ function Form() {
         resolver:yupResolver(schema)
      });
    const onSubmit =(data:dataType)=> {
-    toast.success("Form is Submitted Successfully!")
+    toast.success("Form is Submitted Successfully!",{
+      duration:5000,
+    })
     navigate('/submission', {state:data})
  }
    
