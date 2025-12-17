@@ -2,10 +2,12 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
 import { FaWpforms } from "react-icons/fa";
-import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import type { dataType } from './Type';
+import toast from "react-hot-toast"
 
 function Form() {
-   
+   const navigate=useNavigate()
     const schema = yup.object().shape({
         Name:yup.string().required("Your Name is Required"),
         Email:yup.string().email("Invalid Email Format").required("Your Email is Required"),
@@ -16,9 +18,9 @@ function Form() {
      const { register, handleSubmit,formState:{errors}}=useForm({
         resolver:yupResolver(schema)
      });
-   const onSubmit =(data:{})=> {
-    console.log(data)
+   const onSubmit =(data:dataType)=> {
     toast.success("Form is Submitted Successfully!")
+    navigate('/submission', {state:data})
  }
    
   return (
@@ -54,7 +56,7 @@ function Form() {
        <input type="password" placeholder="Confirm Password..." className="text-md font-medium outline-0 w-full" {...register("ConfirmPassword")}/>
        <span className='text-red-600 font-medium'>{errors.ConfirmPassword?.message}</span>
        </div>
-       <button type="submit" className="text-md font-medium outline-0 w-[90%] mx-auto bg-amber-950 text-white p-3 rounded-lg cursor-pointer transition hover:bg-amber-900">Submit</button>
+       <button type="submit" className="text-md font-medium outline-0 w-[90%] mx-auto bg-amber-950 text-white p-3 rounded-lg  cursor-pointer transition hover:bg-amber-900">Submit</button>
     </form>
     </div>
     </>
