@@ -1,4 +1,5 @@
 
+import { Toaster } from 'react-hot-toast'
 import Form from './Component/Form'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
    <Form/>
+   <Toaster/>
     </>
   )
 }

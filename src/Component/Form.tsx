@@ -2,6 +2,7 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
 import { FaWpforms } from "react-icons/fa";
+import toast from 'react-hot-toast';
 
 function Form() {
    
@@ -16,11 +17,14 @@ function Form() {
         resolver:yupResolver(schema)
      });
    const onSubmit =(data:{})=> {
-    console.log(data) }
+    console.log(data)
+    toast.success("Form is Submitted Successfully!")
+ }
+   
   return (
     <>
-    <div className="flex  justify-center  ">
-    <form onSubmit={handleSubmit(onSubmit)}className="flex flex-col gap-3  border-amber-700 border-2 rounded-lg w-[95%] max-w-130 bg-white p-4 py-6 mt-8">
+    <div className="flex  justify-center  py-8">
+    <form onSubmit={handleSubmit(onSubmit)}className="flex flex-col gap-3  border-amber-700 border-2 rounded-lg w-[95%] max-w-130 bg-white p-4 py-6 mt-8 ">
         <div className="flex justify-center items-center p-3 gap-1">
         <h1 className="text-amber-800 text-3xl font-bold ">Sign Up</h1>
         <FaWpforms className="text-2xl text-amber-800"/>
